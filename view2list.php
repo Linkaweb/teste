@@ -204,6 +204,15 @@ $view2_list->ListOptions->render("header", "left");
 		</div></div></th>
 	<?php } ?>
 <?php } ?>
+<?php if ($view2_list->extrasLead->Visible) { // extrasLead ?>
+	<?php if ($view2_list->SortUrl($view2_list->extrasLead) == "") { ?>
+		<th data-name="extrasLead" class="<?php echo $view2_list->extrasLead->headerCellClass() ?>"><div id="elh_view2_extrasLead" class="view2_extrasLead"><div class="ew-table-header-caption"><?php echo $view2_list->extrasLead->caption() ?></div></div></th>
+	<?php } else { ?>
+		<th data-name="extrasLead" class="<?php echo $view2_list->extrasLead->headerCellClass() ?>"><div class="ew-pointer" onclick="ew.sort(event, '<?php echo $view2_list->SortUrl($view2_list->extrasLead) ?>', 1);"><div id="elh_view2_extrasLead" class="view2_extrasLead">
+			<div class="ew-table-header-btn"><span class="ew-table-header-caption"><?php echo $view2_list->extrasLead->caption() ?></span><span class="ew-table-header-sort"><?php if ($view2_list->extrasLead->getSort() == "ASC") { ?><i class="fas fa-sort-up"></i><?php } elseif ($view2_list->extrasLead->getSort() == "DESC") { ?><i class="fas fa-sort-down"></i><?php } ?></span></div>
+		</div></div></th>
+	<?php } ?>
+<?php } ?>
 <?php if ($view2_list->dataLead->Visible) { // dataLead ?>
 	<?php if ($view2_list->SortUrl($view2_list->dataLead) == "") { ?>
 		<th data-name="dataLead" class="<?php echo $view2_list->dataLead->headerCellClass() ?>"><div id="elh_view2_dataLead" class="view2_dataLead"><div class="ew-table-header-caption"><?php echo $view2_list->dataLead->caption() ?></div></div></th>
@@ -324,6 +333,13 @@ $view2_list->ListOptions->render("body", "left", $view2_list->RowCount);
 		<td data-name="Tipo" <?php echo $view2_list->Tipo->cellAttributes() ?>>
 <span id="el<?php echo $view2_list->RowCount ?>_view2_Tipo" class="view2_Tipo">
 <span<?php echo $view2_list->Tipo->viewAttributes() ?>><?php echo $view2_list->Tipo->getViewValue() ?></span>
+</span>
+</td>
+	<?php } ?>
+	<?php if ($view2_list->extrasLead->Visible) { // extrasLead ?>
+		<td data-name="extrasLead" <?php echo $view2_list->extrasLead->cellAttributes() ?>>
+<span id="el<?php echo $view2_list->RowCount ?>_view2_extrasLead" class="view2_extrasLead">
+<span<?php echo $view2_list->extrasLead->viewAttributes() ?>><span style="white-space: pre-wrap;"><?php echo $view2_list->extrasLead->getViewValue() ?></span></span>
 </span>
 </td>
 	<?php } ?>
